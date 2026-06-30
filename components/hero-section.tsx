@@ -1,34 +1,35 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { CENTERS } from '@/lib/data'
+import { useState } from "react";
+import { CENTERS } from "@/lib/data";
 
 interface HeroSectionProps {
-  onBook: (center: (typeof CENTERS)[0]) => void
+  onBook: (center: (typeof CENTERS)[0]) => void;
 }
 
 const STATS = [
-  { value: '10', label: 'eSports Заал' },
-  { value: '600+', label: 'PC Тоног' },
-  { value: '20', label: 'Тоглоом' },
-  { value: '4.6★', label: 'Дундаж Үнэлгээ' },
-]
+  { value: "10", label: "eSports Заал" },
+  { value: "600+", label: "PC Тоног" },
+  { value: "20", label: "Тоглоом" },
+  { value: "4.6★", label: "Дундаж Үнэлгээ" },
+];
 
 export function HeroSection({ onBook }: HeroSectionProps) {
-  const [search, setSearch] = useState('')
-  const [showResults, setShowResults] = useState(false)
+  const [search, setSearch] = useState("");
+  const [showResults, setShowResults] = useState(false);
 
-  const results = search.length > 0
-    ? CENTERS.filter(
-        (c) =>
-          c.name.toLowerCase().includes(search.toLowerCase()) ||
-          c.district.toLowerCase().includes(search.toLowerCase()) ||
-          c.address.toLowerCase().includes(search.toLowerCase())
-      )
-    : []
+  const results =
+    search.length > 0
+      ? CENTERS.filter(
+          (c) =>
+            c.name.toLowerCase().includes(search.toLowerCase()) ||
+            c.district.toLowerCase().includes(search.toLowerCase()) ||
+            c.address.toLowerCase().includes(search.toLowerCase()),
+        )
+      : [];
 
   function scrollToCenters() {
-    document.getElementById('centers')?.scrollIntoView({ behavior: 'smooth' })
+    document.getElementById("centers")?.scrollIntoView({ behavior: "smooth" });
   }
 
   return (
@@ -39,10 +40,16 @@ export function HeroSection({ onBook }: HeroSectionProps) {
       {/* Hero background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/hero-bg.png)' }}
+        style={{ backgroundImage: "url(/hero-bg.png)" }}
       />
       {/* Dark overlay to keep text legible */}
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(5,16,30,0.72) 0%, rgba(5,16,30,0.55) 40%, rgba(5,16,30,0.85) 80%, #05101e 100%)' }} />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(5,16,30,0.72) 0%, rgba(5,16,30,0.55) 40%, rgba(5,16,30,0.85) 80%, #05101e 100%)",
+        }}
+      />
 
       {/* Subtle grid on top */}
       <div className="absolute inset-0 cyber-grid opacity-20" />
@@ -62,10 +69,10 @@ export function HeroSection({ onBook }: HeroSectionProps) {
           <span
             className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-widest border"
             style={{
-              background: 'rgba(255,45,120,0.08)',
-              borderColor: 'rgba(255,45,120,0.35)',
-              color: '#ff2d78',
-              fontFamily: 'var(--font-heading)',
+              background: "rgba(255,45,120,0.08)",
+              borderColor: "rgba(255,45,120,0.35)",
+              color: "#ff2d78",
+              fontFamily: "var(--font-heading)",
             }}
           >
             18+
@@ -78,11 +85,13 @@ export function HeroSection({ onBook }: HeroSectionProps) {
         {/* Main heading */}
         <h1
           className="text-5xl sm:text-7xl font-black leading-none mb-6 text-balance"
-          style={{ fontFamily: 'var(--font-heading)' }}
+          style={{ fontFamily: "var(--font-heading)" }}
         >
           <span className="block text-foreground">ESPORTS</span>
           <span className="block neon-text-cyan">ЗААЛ</span>
-          <span className="block text-foreground text-4xl sm:text-5xl mt-1">ЗАХИАЛАХ</span>
+          <span className="block text-foreground text-4xl sm:text-5xl mt-1">
+            ЗАХИАЛАХ
+          </span>
         </h1>
 
         <p className="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto leading-relaxed mb-10">
@@ -103,24 +112,27 @@ export function HeroSection({ onBook }: HeroSectionProps) {
             <input
               type="text"
               value={search}
-              onChange={(e) => { setSearch(e.target.value); setShowResults(true) }}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setShowResults(true);
+              }}
               onFocus={() => setShowResults(true)}
               onBlur={() => setTimeout(() => setShowResults(false), 200)}
               placeholder="eSports зал хайх..."
               className="w-full pl-12 pr-4 py-4 rounded-xl text-foreground placeholder-muted-foreground focus:outline-none transition-all duration-200 text-sm"
               style={{
-                background: 'rgba(7,21,37,0.9)',
-                border: '1px solid rgba(0,212,255,0.3)',
-                boxShadow: '0 0 20px rgba(0,212,255,0.1)',
+                background: "rgba(7,21,37,0.9)",
+                border: "1px solid rgba(0,212,255,0.3)",
+                boxShadow: "0 0 20px rgba(0,212,255,0.1)",
               }}
-              onKeyDown={(e) => e.key === 'Enter' && scrollToCenters()}
+              onKeyDown={(e) => e.key === "Enter" && scrollToCenters()}
             />
             <button
               onClick={scrollToCenters}
               className="absolute right-2 px-4 py-2 rounded-lg text-xs font-bold text-background transition-all duration-200"
               style={{
-                background: '#00d4ff',
-                fontFamily: 'var(--font-heading)',
+                background: "#00d4ff",
+                fontFamily: "var(--font-heading)",
               }}
             >
               ХАЙХ
@@ -132,28 +144,33 @@ export function HeroSection({ onBook }: HeroSectionProps) {
             <div
               className="absolute top-full left-0 right-0 mt-2 rounded-xl overflow-hidden shadow-2xl z-30"
               style={{
-                background: 'rgba(7,21,37,0.98)',
-                border: '1px solid rgba(0,212,255,0.25)',
+                background: "rgba(7,21,37,0.98)",
+                border: "1px solid rgba(0,212,255,0.25)",
               }}
             >
               {results.map((c) => (
                 <button
                   key={c.id}
-                  onClick={() => { onBook(c); setShowResults(false) }}
+                  onClick={() => {
+                    onBook(c);
+                    setShowResults(false);
+                  }}
                   className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-muted transition-colors group border-b border-border last:border-0"
                 >
                   <div>
                     <p className="text-sm font-semibold text-foreground group-hover:text-neon-cyan transition-colors">
                       {c.name}
                     </p>
-                    <p className="text-xs text-muted-foreground">{c.district} — {c.address}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {c.district} — {c.address}
+                    </p>
                   </div>
                   <span
                     className="text-xs font-bold px-2 py-1 rounded shrink-0"
                     style={{
                       background: `${c.color}20`,
                       color: c.color,
-                      fontFamily: 'var(--font-heading)',
+                      fontFamily: "var(--font-heading)",
                     }}
                   >
                     ₮{c.pricePerHour.toLocaleString()}
@@ -170,19 +187,23 @@ export function HeroSection({ onBook }: HeroSectionProps) {
             onClick={scrollToCenters}
             className="px-8 py-4 rounded-xl font-black text-background text-sm tracking-widest neon-glow-btn transition-all duration-200"
             style={{
-              background: '#00d4ff',
-              fontFamily: 'var(--font-heading)',
+              background: "#00d4ff",
+              fontFamily: "var(--font-heading)",
             }}
           >
             ЗАЛ ХАЙХ
           </button>
           <button
-            onClick={() => document.getElementById('games')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() =>
+              document
+                .getElementById("games")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
             className="px-8 py-4 rounded-xl font-bold text-sm tracking-widest border transition-all duration-200 hover:bg-muted"
             style={{
-              border: '1px solid rgba(255,45,120,0.4)',
-              color: '#ff2d78',
-              fontFamily: 'var(--font-heading)',
+              border: "1px solid rgba(255,45,120,0.4)",
+              color: "#ff2d78",
+              fontFamily: "var(--font-heading)",
             }}
           >
             ТОГЛООМУУД
@@ -196,13 +217,13 @@ export function HeroSection({ onBook }: HeroSectionProps) {
               key={stat.label}
               className="rounded-xl py-4 px-3 text-center"
               style={{
-                background: 'rgba(7,21,37,0.7)',
-                border: '1px solid rgba(0,212,255,0.12)',
+                background: "rgba(7,21,37,0.7)",
+                border: "1px solid rgba(0,212,255,0.12)",
               }}
             >
               <p
                 className="text-2xl font-black neon-text-cyan mb-1"
-                style={{ fontFamily: 'var(--font-heading)' }}
+                style={{ fontFamily: "var(--font-heading)" }}
               >
                 {stat.value}
               </p>
@@ -214,9 +235,12 @@ export function HeroSection({ onBook }: HeroSectionProps) {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-        <span className="text-xs text-muted-foreground font-mono tracking-widest">SCROLL</span>
+        <span className="text-xs text-muted-foreground font-mono tracking-widest">
+          SCROLL
+        </span>
         <div className="w-px h-8 bg-neon-cyan animate-pulse" />
+     
       </div>
     </section>
-  )
+  );
 }
