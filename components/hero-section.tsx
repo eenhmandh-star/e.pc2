@@ -8,7 +8,7 @@ interface HeroSectionProps {
 }
 
 const STATS = [
-  { value: '10', label: 'eSports Зал' },
+  { value: '10', label: 'eSports Заал' },
   { value: '600+', label: 'PC Тоног' },
   { value: '20', label: 'Тоглоом' },
   { value: '4.6★', label: 'Дундаж Үнэлгээ' },
@@ -81,7 +81,7 @@ export function HeroSection({ onBook }: HeroSectionProps) {
           style={{ fontFamily: 'var(--font-heading)' }}
         >
           <span className="block text-foreground">ESPORTS</span>
-          <span className="block neon-text-cyan">ЗАЛ</span>
+          <span className="block neon-text-cyan">ЗААЛ</span>
           <span className="block text-foreground text-4xl sm:text-5xl mt-1">ЗАХИАЛАХ</span>
         </h1>
 

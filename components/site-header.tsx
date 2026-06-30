@@ -6,7 +6,7 @@ import { useAuth } from './auth-context'
 const NAV_LINKS = [
   { label: 'Нүүр', href: '#hero' },
   { label: 'Тоглоомууд', href: '#games' },
-  { label: 'Зал хайх', href: '#centers' },
+  { label: 'Заал хайх', href: '#centers' },
   { label: 'Захиалга', href: '#booking' },
 ]
 
